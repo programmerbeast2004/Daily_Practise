@@ -1,4 +1,4 @@
-// Last updated: 8/2/2025, 5:31:49 AM
+// Last updated: 8/2/2025, 5:32:11 AM
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> triangle = new ArrayList<>();
