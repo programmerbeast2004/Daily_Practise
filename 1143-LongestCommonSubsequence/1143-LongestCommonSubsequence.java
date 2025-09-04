@@ -1,20 +1,28 @@
-// Last updated: 9/4/2025, 10:51:16 AM
+// Last updated: 9/4/2025, 11:35:34 AM
 class Solution {
-    public int longestCommonSubsequence(String text1, String text2) {
-        int[][] dp = new int[text1.length()][text2.length()];
-        for (int[] a : dp) Arrays.fill(a, -1);
-        return LCS(text1, text2, 0, 0, dp);
-    }
-
-    private int LCS(String s1, String s2, int i, int j, int[][] dp) {
-        if (i == s1.length() || j == s2.length()) return 0;
-        if (dp[i][j] != -1) return dp[i][j];
-
-        if (s1.charAt(i) == s2.charAt(j)) {
-            return dp[i][j] = 1 + LCS(s1, s2, i + 1, j + 1, dp);
-        } else {
-            return dp[i][j] = Math.max(LCS(s1, s2, i + 1, j, dp),
-                                      LCS(s1, s2, i, j + 1, dp));
+    public int change(int amount, int[] coins) {
+        int[][] dp = new int[amount + 1][coins.length + 1];
+        for (int[] row : dp) {
+            Arrays.fill(row, -1);
         }
+        return Coin_Change(coins, amount, 0, dp);
+    }
+    public int Coin_Change(int[] coins, int amount, int i, int[][] dp) {
+        if (amount == 0) return 1;  
+        if (i == coins.length) return 0;
+
+        if (dp[amount][i] != -1) return dp[amount][i];  // Already computed
+
+        int inc = 0, exc = 0;
+
+        // Include coin[i]
+        if (amount >= coins[i]) {
+            inc = Coin_Change(coins, amount - coins[i], i, dp);
+        }
+
+        // Exclude coin[i]
+        exc = Coin_Change(coins, amount, i + 1, dp);
+
+        return dp[amount][i] = inc + exc;
     }
 }
