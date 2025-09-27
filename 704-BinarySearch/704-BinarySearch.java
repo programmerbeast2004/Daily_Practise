@@ -1,20 +1,16 @@
-// Last updated: 9/27/2025, 1:29:53 PM
+// Last updated: 9/27/2025, 2:32:33 PM
 class Solution {
-    public int search(int[] nums, int target) {
-        int n=nums.length;
-        int l=0,r=n-1;
-        while(l<=r){
-            int mid=l+(r-l)/2;
-            if(nums[mid]==target){
-                return mid;
-            }
-            else if(nums[mid]<target){
-                l=mid+1;
-            }
-            else{
-                r=mid-1;
-            }
+    public void reverseString(char[] arr) {
+        int left=0;
+        int right=arr.length-1;
+
+        while(left<right){
+            char temp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=temp;
+        
+        left++;
+        right--;
         }
-        return -1;
     }
 }
