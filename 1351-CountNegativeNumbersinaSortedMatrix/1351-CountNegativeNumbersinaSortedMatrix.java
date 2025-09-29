@@ -1,14 +1,19 @@
-// Last updated: 9/29/2025, 1:17:38 PM
+// Last updated: 9/29/2025, 1:37:36 PM
 class Solution {
-    public int countNegatives(int[][] grid) {
-        int c=0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[0].length;j++){
-                if(grid[i][j]<0){
-                    c++;
-                }
+    public int maximumWealth(int[][] accounts) {
+        int max=Integer.MIN_VALUE;
+        int m=accounts.length;
+        int n=accounts[0].length;
+        for(int i=0;i<m;i++){
+            int sum=0;
+            for(int j=0;j<n;j++){
+                sum+=accounts[i][j];
             }
+            if(max<=sum){
+                max=sum;
+            }
+
         }
-        return c;
+        return max;
     }
 }
