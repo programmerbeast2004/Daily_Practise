@@ -1,14 +1,15 @@
-// Last updated: 10/1/2025, 6:29:26 PM
+// Last updated: 10/1/2025, 6:36:14 PM
 class Solution {
-    public int[][] transpose(int[][] arr) {
-        int m=arr.length;
-        int n=arr[0].length;
-        int[][] res=new int[n][m];
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                res[j][i]=arr[i][j];
+    public boolean isToeplitzMatrix(int[][] matrix) {
+        int m=matrix.length;
+        int n=matrix[0].length;
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(matrix[i][j]!=matrix[i-1][j-1]){
+                    return false;
+                }
             }
         }
-        return res;
+        return true;
     }
 }
