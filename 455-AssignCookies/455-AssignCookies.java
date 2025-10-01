@@ -1,21 +1,13 @@
-// Last updated: 10/1/2025, 11:29:50 AM
+// Last updated: 10/1/2025, 1:17:23 PM
 class Solution {
-    public int findContentChildren(int[] g, int[] s) {
-        int i=0;
-        int j=0;
-        int c=0;
-        Arrays.sort(g);
-        Arrays.sort(s);
-        while(i<g.length && j<s.length){
-        if(s[j]>=g[i]){
-            i++;
-            j++;
-            c++;
+    public boolean canJump(int[] nums) {
+        int m=0;
+        for(int i=0;i<nums.length;i++){
+            if(m<i){
+                return false;
+            }
+            m=Math.max(m,nums[i]+i);
         }
-        else{
-            j++;
-        }
-        }
-        return c;
+        return true;
     }
 }
