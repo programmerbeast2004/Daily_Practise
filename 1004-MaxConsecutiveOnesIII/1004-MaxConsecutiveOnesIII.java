@@ -1,21 +1,18 @@
-// Last updated: 9/30/2025, 9:22:22 PM
+// Last updated: 10/3/2025, 6:32:51 AM
 class Solution {
-    public int longestOnes(int[] nums, int k) {
-        int l=0;
-        int ans=0;
-        int c=0;
-        for(int r=0;r<nums.length;r++){
-            if(nums[r]==0){
-                c++;
-            }
-            while(c>k){
-                if(nums[l]==0){
-                    c--;
-                }
+    public int minSubArrayLen(int target, int[] nums) {
+        int l=0, r=0,s=0;
+        int minWindow=Integer.MAX_VALUE;
+        while(r<nums.length){
+            s+=nums[r];
+            r++;
+            while(s>=target){
+                int curr=r-l;
+                minWindow=Math.min(minWindow,curr);
+                s-=nums[l];
                 l++;
             }
-            ans=Math.max(ans,r-l+1);
         }
-        return ans;
+        return  minWindow==Integer.MAX_VALUE? 0: minWindow;
     }
 }
