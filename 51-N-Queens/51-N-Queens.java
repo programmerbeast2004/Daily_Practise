@@ -1,12 +1,18 @@
-// Last updated: 10/4/2025, 1:57:51 PM
+// Last updated: 10/4/2025, 3:31:35 PM
 class Solution {
-    public int getMinDistance(int[] nums, int target, int start) {
-        int min=Integer.MAX_VALUE;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==target){
-                min=Math.min(min, Math.abs(i-start));
-            }
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> ansList=new ArrayList<>();
+        helper(0,nums,new ArrayList<>(),ansList);
+        return ansList;
+    }
+    public static void helper(int idx,int[] nums,List<Integer> ds,List<List<Integer>> anslist){
+        anslist.add(new ArrayList<>(ds)); 
+        for(int i = idx;i<nums.length;i++) {
+            if(i!=idx && nums[i] == nums[i-1]) continue; 
+            ds.add(nums[i]); 
+            helper(i+1, nums, ds, anslist); 
+            ds.remove(ds.size() - 1);
         }
-        return min;
     }
 }
