@@ -1,4 +1,4 @@
-// Last updated: 7/31/2025, 12:22:49 PM
+// Last updated: 10/4/2025, 6:09:06 AM
 class Solution {
     public int maxArea(int[] height) {
         int left=0;
