@@ -1,16 +1,20 @@
-// Last updated: 10/4/2025, 11:14:56 PM
+// Last updated: 10/4/2025, 11:37:01 PM
 class Solution {
-    public int rob(int[] nums) {
-        int n=nums.length;
-        if(n==0) return 0;
-        if(n==1) return nums[0];
-
-        int dp[] =new int[n+1];
-        dp[0]=0;
-        dp[1]=nums[0];
-        for(int k=2;k<=n;k++){
-            dp[k]=Math.max(dp[k-2]+nums[k-1],dp[k-1]);
+    public int uniquePaths(int m, int n) {
+        int[][] dp=new int[m][n];
+        for(int arr[]: dp){
+            Arrays.fill(arr,-1);
         }
-        return dp[n];
+        return helper(0,0,m,n,dp);
+    }
+    public int helper(int i,int j,int m,int n, int[][] dp){
+        if(i>=m || j>=n) return 0;
+        if(i==m-1 ||j==n-1) return 1;
+        if(dp[i][j] !=-1)return dp[i][j];
+
+        int right=helper(i,j+1,m,n,dp);
+        int down=helper(i+1,j,m,n,dp);
+
+        return dp[i][j]=right+down;
     }
 }
