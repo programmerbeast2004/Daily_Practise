@@ -1,4 +1,4 @@
-// Last updated: 7/31/2025, 12:20:49 PM
+// Last updated: 10/31/2025, 3:14:43 PM
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -14,11 +14,12 @@ class Solution {
         ListNode prev=null;
         ListNode curr=head;
         while(curr!=null){
-            ListNode temp=curr.next;
+            ListNode next=curr.next;
             curr.next=prev;
             prev=curr;
-            curr=temp;
+            curr=next;
         }
         return prev;
+
     }
 }
