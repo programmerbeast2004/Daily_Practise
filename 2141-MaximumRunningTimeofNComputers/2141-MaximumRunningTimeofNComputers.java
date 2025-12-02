@@ -1,4 +1,4 @@
-// Last updated: 12/2/2025, 10:09:09 PM
+// Last updated: 12/2/2025, 10:12:32 PM
 1class Solution {
 2    public long maxRunTime(int n, int[] batteries) {
 3        long te=0;
