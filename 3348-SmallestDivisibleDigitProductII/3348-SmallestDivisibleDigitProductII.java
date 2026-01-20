@@ -1,5 +1,7 @@
-// Last updated: 1/19/2026, 9:42:28 AM
-class Solution {
+// Last updated: 1/20/2026, 1:01:39 PM
+import java.util.Arrays;
+
+public class Solution {
     int primes[] = new int[] { 2, 3, 5, 7 };
     int maxPrime = primes[primes.length - 1];
 
@@ -9,6 +11,7 @@ class Solution {
         int minLength;
         int firstZeroIndexFromLeft = 0;
 
+        // Calculate the prime factors of t
         for (int prime : primes) {
             while (t % prime == 0) {
                 t /= prime;
@@ -16,12 +19,15 @@ class Solution {
             }
         }
 
+        // If t is not fully factorizable by the given primes, return -1
         if (t != 1) {
             return "-1";
         }
 
+        // Calculate the minimum length required
         minLength = getMinLength(primeCount);
 
+        // If num's length is less than the required minimum length, build the smallest number
         if (numLength < minLength) {
             return buildSuffix(primeCount, minLength, new char[minLength]);
         }
@@ -50,9 +56,11 @@ class Solution {
             }
         }
 
+        // Build and return the final result
         return buildSuffix(primeCount, result.length, result);
     }
 
+    // Update primeCount based on the digit value
     void logNum(int[] primeCount, int num, int value) {
         if (num < '2') {
             return;
@@ -72,6 +80,7 @@ class Solution {
         }
     }
 
+    // Construct the smallest valid number using the prime factors
     String buildSuffix(int[] primeCount, int targetLength, char[] result) {
         int index = result.length;
 
@@ -121,6 +130,7 @@ class Solution {
         return targetLength == result.length ? new String(result) : new String(result, 1, result.length - 1);
     }
 
+    // Calculate the minimum length required based on the prime factors
     int getMinLength(int[] primeCount) {
         int count2 = Math.max(0, primeCount[2]);
         int count3 = Math.max(0, primeCount[3]);
