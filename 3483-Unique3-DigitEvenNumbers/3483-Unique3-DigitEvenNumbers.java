@@ -1,4 +1,4 @@
-// Last updated: 2/24/2026, 4:14:09 PM
+// Last updated: 2/24/2026, 4:14:53 PM
 1class Solution {
 2    public int totalNumbers(int[] digits) {
 3        HashSet<Integer> set = new HashSet<>();
@@ -23,14 +23,6 @@
 22            }
 23        }
 24
-25        List<Integer> ans = new ArrayList<>(set);
-26        Collections.sort(ans);
-27
-28        int[] arr = new int[ans.size()];
-29        for (int i = 0; i < ans.size(); i++) {
-30            arr[i] = ans.get(i);
-31        }
-32
-33        return arr.length;
-34    }
-35}
+25       return set.size();
+26    }
+27}
