@@ -1,15 +1,15 @@
-// Last updated: 11/1/2025, 4:43:44 AM
-class Solution {
-    public int minimumCost(int[] cost) {
-        int s=0;
-        Arrays.sort(cost);
-        for(int i=cost.length-1;i>=0;i-=3){
-            s+=cost[i];
-            if(i>0){
-                s+=cost[i-1];
-            }
-            
-        }
-        return s;
-    }
-}
+// Last updated: 6/2/2026, 10:17:06 AM
+1class Solution {
+2    public int minimumCost(int[] cost) {
+3        int s=0;
+4        Arrays.sort(cost);
+5        for(int i=cost.length-1;i>=0;i-=3){
+6            s+=cost[i];
+7            if(i>0){
+8                s+=cost[i-1];
+9            }
+10            
+11        }
+12        return s;
+13    }
+14}
