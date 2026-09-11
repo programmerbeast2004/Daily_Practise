@@ -1,4 +1,4 @@
-// Last updated: 9/11/2026, 10:20:01 AM
+// Last updated: 9/11/2026, 10:20:12 AM
 1class Solution {
 2    public int numDistinct(String s, String t) {
 3        int n = s.length();
@@ -21,4 +21,3 @@
 20        return dp[i][j] = inc + exc;
 21    }
 22}
-23
