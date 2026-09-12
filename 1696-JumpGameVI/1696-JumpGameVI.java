@@ -1,4 +1,4 @@
-// Last updated: 9/12/2026, 2:05:15 AM
+// Last updated: 9/12/2026, 7:06:42 AM
 1class Solution {
 2    public boolean canReach(String s, int minJump, int maxJump) {
 3        int n=s.length();
