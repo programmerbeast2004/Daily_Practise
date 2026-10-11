@@ -1,23 +1,21 @@
-// Last updated: 3/26/2026, 2:30:20 AM
+// Last updated: 10/11/2026, 11:15:40 AM
 1class NumArray {
-2    int[]pre;
+2    int[] arr;
 3    public NumArray(int[] nums) {
-4        int n=nums.length;
-5        pre=new int[n];
-6        pre[0]=nums[0];
-7        for(int i=1;i<n;i++){
-8            pre[i]=nums[i]+pre[i-1];
-9        }
-10    }
-11    
-12    public int sumRange(int left, int right) {
-13        if(left==0)return pre[right];
-14        return pre[right]-pre[left-1];
-15    }
-16}
-17
-18/**
-19 * Your NumArray object will be instantiated and called as such:
-20 * NumArray obj = new NumArray(nums);
-21 * int param_1 = obj.sumRange(left,right);
-22 */
+4        arr=Arrays.copyOf(nums,nums.length);
+5        for(int i=1;i<nums.length;i++){
+6            arr[i]+=arr[i-1];
+7        }
+8    }
+9    
+10    public int sumRange(int left, int right) {
+11        if(left==0) return arr[right];
+12        else return arr[right]-arr[left-1];
+13    }
+14}
+15
+16/**
+17 * Your NumArray object will be instantiated and called as such:
+18 * NumArray obj = new NumArray(nums);
+19 * int param_1 = obj.sumRange(left,right);
+20 */
