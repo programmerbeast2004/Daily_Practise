@@ -1,23 +1,35 @@
-// Last updated: 10/15/2026, 11:43:02 AM
-1class Solution {
-2    public long maxAlternatingSum(int[] nums) {
-3        long[] a=new long[nums.length];
-4        for(int i=0;i<nums.length;i++){
-5            a[i]=(long)nums[i]*nums[i];
-6        }
-7        
-8        Arrays.sort(a);
-9
-10        long ans=0;
-11        int k=nums.length/2;
-12
-13        for(int i=0;i<k;i++){
-14            ans-=a[i];
-15        }
-16
-17        for(int i=k;i<nums.length;i++){
-18            ans+=a[i];
-19        }
-20        return ans;
-21    }
-22}
+// Last updated: 10/15/2026, 11:49:14 AM
+class Solution {
+    public long maxAlternatingSum(int[] nums) {
+        int length = nums.length;
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+        for (int i = 0; i < length; ++i) {
+            int value = nums[i];
+            if (value < 0) nums[i] = value = -value;
+            if (value < min) min = value;
+            if (value > max) max = value;
+        }
+        int[] counts = new int[max + 1];
+        for (int i = 0; i < length; ++i) {
+            ++counts[nums[i]];
+        }
+        int negatives = length >> 1;
+        long result = 0;
+        for (int num = min; num <= max; ++num) {
+            int count = counts[num];
+            if (count == 0) continue;
+            long sq = num * num;
+            if (count <= negatives && negatives != 0) {
+                result -= sq * count;
+                negatives -= count;
+            } else if (negatives == 0) {
+                result += sq * count;
+            } else {
+                result -= sq * negatives;
+                result += sq * (count - negatives);
+                negatives = 0;
+            }
+        }
+        return result;
+    }
+}
